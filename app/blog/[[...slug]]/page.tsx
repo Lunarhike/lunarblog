@@ -26,33 +26,16 @@ async function getBlogPostFromParams({ params }: DocPageProps) {
   return { source: mdxContent, slug };
 }
 
-//Slugs of all blog posts
-function getAllFiles(dirPath: string, arrayOfFiles: string[]) {
-  const files = fs.readdirSync(dirPath);
-
-  arrayOfFiles = arrayOfFiles || [];
-
-  files.forEach((file) => {
-    if (fs.statSync(dirPath + "/" + file).isDirectory()) {
-      arrayOfFiles = getAllFiles(dirPath + "/" + file, arrayOfFiles);
-    } else {
-      arrayOfFiles.push(
-        path.join(dirPath, "/", file).replace(process.cwd() + "/content/", "")
-      );
-    }
-  });
-
-  return arrayOfFiles;
-}
-
 //Static params for all blog posts
 export async function generateStaticParams() {
   const contentDirectory = path.resolve(process.cwd(), "content");
-  const slugs = getAllFiles(contentDirectory, []);
+  const files = fs.readdirSync(path.resolve(process.cwd(), contentDirectory));
 
-  return slugs.map((slug: string) => ({
-    slug: slug.replace(/\.mdx$/, "").split("/"),
+  const slugs = files.map((file) => ({
+    slug: file.replace(/\.mdx$/, "").split("/"),
   }));
+
+  return slugs;
 }
 
 export default async function BlogPostPage({ params }: DocPageProps) {

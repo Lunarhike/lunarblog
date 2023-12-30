@@ -54,7 +54,7 @@ export const docsConfig: PostsConfig = {
         },
         {
           title: "Siemaelo",
-          href: "/blog/dupa/siemaelo",
+          href: "/blog/siemaelo",
           items: [],
         },
       ],
