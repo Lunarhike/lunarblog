@@ -57,6 +57,21 @@ export const docsConfig: PostsConfig = {
           href: "/blog/siemaelo",
           items: [],
         },
+        {
+          title: "About_test",
+          href: "/blog/test3",
+          items: [],
+        },
+        {
+          title: "Siema_test",
+          href: "/blog/test",
+          items: [],
+        },
+        {
+          title: "Siemaelo_test",
+          href: "/blog/test2",
+          items: [],
+        },
       ],
     },
   ],

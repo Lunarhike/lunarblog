@@ -14,7 +14,7 @@ export default function DocsLayout({ children }: DocsLayoutProps) {
             <DocsSidebarNav items={docsConfig.sidebarNav} />
           </div>
         </aside>
-        {children}
+        <div className="min-h-full">{children}</div>
       </div>
     </div>
   );
